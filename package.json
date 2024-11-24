@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "vitepress": "^1.5.0",
+    "vitepress-sidebar": "^1.29.0"
+  },
+  "scripts": {
+    "preb": "npm --no-git-tag-version version minor",
+    "b": "npm run push",
+    "commit": "git add . && git commit -am ",
+    "c": "npm run commit",
+    "g": "npm run commit",
+    "postg": "npm run postpush",
+    "push": "npm run commit",
+    "_push": "git push origin",
+    "_pull": "git pull origin",
+    "postpush": "uname -s | grep -q Darwin && npm run _push || while true; do timeout 15 npm run _push && break; done",
+    "pull": "uname -s | grep -q Darwin && npm run _pull || while true; do timeout 15 npm run _pull && break; done",
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview .",
+    "docs:dev": "vitepress dev .",
+    "docs:build": "vitepress build .",
+    "docs:preview": "vitepress preview ."
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  }
+}
