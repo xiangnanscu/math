@@ -23,3 +23,5 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
+# 勘误
+- 3.6.2 表格有问题

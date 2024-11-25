@@ -44,7 +44,10 @@ function parseHeader(line) {
     };
 }
 const makeMathJaxCompatible = (content) => {
-  return content.replace(/^## [^第]/g, '$1').replace('](images', '](/images'.replace(' {€',' \text{€}{'));
+  return content.replace(/^## [^第]/g, '$1').replace('](images', '](/images').replace(' {€',' \text{€}{')
+  .replaceAll('">', '">\n\n')
+  .replaceAll('<td>', '<td>\n\n')
+  .replaceAll('</td>', '\n\n</td>');
 }
 // 解析文档结构
 function parseDocument(content) {
