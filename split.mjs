@@ -8,7 +8,9 @@ function normalizeTitle(title) {
       // 移除标题前的序号和空格
       .replace(/^[\d\.]+\s*/, '')
       .replace(/\s/g,'')
-      .replace('${n}$', 'n')
+      .replaceAll('${n}$', 'n')
+      .replaceAll('$\\','')
+      .replaceAll('$','')
       // 移除汉字之间的空格
       // .replace(/([\u4e00-\u9fa5])\s+([\u4e00-\u9fa5])/g, '$1$2')
       // 汉字和数字之间的空格替换为连字符

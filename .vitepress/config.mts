@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
-import { generateSidebar } from "vitepress-sidebar";
+// import { generateSidebar } from "vitepress-sidebar";
+import { generateSidebar } from "../sidebar"
 import { version } from "../package.json";
 import mathjax3 from "markdown-it-mathjax3";
 
@@ -81,6 +82,7 @@ export default defineConfig({
        * For detailed instructions, see the links below:
        * https://vitepress-sidebar.jooy2.com/guide/api
        */
+      titleCallback: (title)=>title,
       documentRootPath: "/",
       // scanStartPath: null, // will trigger ts error
       // resolvePath: null, // will trigger ts error
