@@ -21,7 +21,7 @@
     "pull": "uname -s | grep -q Darwin && npm run _pull || while true; do timeout 15 npm run _pull && break; done",
     "split": "node split.mjs",
     "dev": "vitepress dev .",
-    "build": "NODE_OPTIONS='--max-old-space-size=10240' vitepress build .",
+    "build": "npm run docs:build",
     "preview": "vitepress preview .",
     "docs:dev": "vitepress dev .",
     "docs:build": "NODE_OPTIONS='--max-old-space-size=10240' vitepress build .",
