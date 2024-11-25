@@ -1,4 +1,4 @@
-function formatTable(html) {
+export function formatTable(html) {
   const STATE = {
       NORMAL: 0,      // 普通文本状态
       TAG_START: 1,   // 标签开始状态 (<)
@@ -59,8 +59,9 @@ function formatTable(html) {
               if (char === '/' && html[i + 1] === '>') {
                   // 处理自闭合标签
                   state = STATE.NORMAL;
-                  result += char;
-                  continue;
+                  result += '/>';
+                  i++;
+                  break;
               } else if (char === '>') {
                   state = STATE.TD_CONTENT;
                   tdContent = '';
@@ -83,5 +84,8 @@ function formatTable(html) {
   return result;
 }
 
-console.log( formatTable('<table><tr><td rowspan="2">$p > 0 0 < 0$</td><td>指数 $x$</td><td>幂 ${a}^{x}$</td></tr></table>'));
-console.log(formatTable('<table><tr><td colspan="2"/><td/><td>a</td></tr></table>'));
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+// console.log( formatTable('<table><tr><td rowspan="2">$p > 0 0 < 0$</td><td>指数 $x$</td><td>幂 ${a}^{x}$</td></tr></table>'));
+// console.log(formatTable('<table><tr><td colspan="2"/><td/><td>a</td></tr></table>'));
+}
