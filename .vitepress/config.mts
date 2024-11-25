@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import { generateSidebar } from "vitepress-sidebar";
 import { version } from "../package.json";
+import mathjax3 from "markdown-it-mathjax3";
 
 // https://vitepress.dev/reference/site-config
 // https://github.com/vuejs/vitepress/blob/main/docs/.vitepress/config/zh.ts
@@ -8,6 +9,12 @@ export default defineConfig({
   title: "数学手册",
   markdown: {
     math: true,
+    config(md) {
+      md.use(mathjax3, {
+        tex: { tags: "ams" },
+
+      });
+    },
   },
   // description: "由 Vite 和 Vue 驱动的静态站点生成器",
   mpa: false,

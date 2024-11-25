@@ -8,6 +8,7 @@ function normalizeTitle(title) {
       // 移除标题前的序号和空格
       .replace(/^[\d\.]+\s*/, '')
       .replace(/\s/g,'')
+      .replace('${n}$', 'n')
       // 移除汉字之间的空格
       // .replace(/([\u4e00-\u9fa5])\s+([\u4e00-\u9fa5])/g, '$1$2')
       // 汉字和数字之间的空格替换为连字符
@@ -42,7 +43,9 @@ function parseHeader(line) {
         full: content
     };
 }
-
+const makeMathJaxCompatible = (content) => {
+  return content.replace(/^## [^第]/g, '$1').replace('](images', '](/images'.replace(' {€',' \text{€}{'));
+}
 // 解析文档结构
 function parseDocument(content) {
     const lines = content.split('\n');
@@ -74,9 +77,9 @@ function parseDocument(content) {
             else if (level === 5 && currentSection) {
                 currentSection.content.push(`## ${header.full}`);
             }
-        } else if (currentSection && line.trim()) {
-            // 添加非空内容行到当前section
-            currentSection.content.push(line);
+        } else if (currentSection) {
+            // 修改这里：添加所有行到当前section，包括空行
+            currentSection.content.push(makeMathJaxCompatible(line));
         }
     }
 
