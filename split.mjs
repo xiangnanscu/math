@@ -132,4 +132,4 @@ export async function splitMarkdown(content, outputDir = '.') {
 
 
 
-const result = await splitMarkdown(fs.readFileSync('.vitepress/p2.md', 'utf8'), './');
+const result = await splitMarkdown(fs.readFileSync('.vitepress/p1.md', 'utf8'), './');
