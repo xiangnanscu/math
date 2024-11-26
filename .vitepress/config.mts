@@ -78,7 +78,7 @@ export default defineConfig({
     //   },
     // },
     search: {
-      provider: 'local'
+      ...(process.env.GITHUB_ACTIONS ? {provider: 'local'} : {})
     },
     socialLinks: [{ icon: "github", link: "https://github.com/xiangnanscu/math" }],
     sidebar: generateSidebar({
