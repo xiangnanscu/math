@@ -76,6 +76,9 @@ export default defineConfig({
     //     indexName: "数学手册",
     //   },
     // },
+    search: {
+      provider: 'local'
+    },
     socialLinks: [{ icon: "github", link: "https://github.com/xiangnanscu/math" }],
     sidebar: generateSidebar({
       /*
