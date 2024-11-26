@@ -7,6 +7,8 @@ import { formatTable } from './utils.mjs';
 function normalizeTitle(title) {
   return title
       .trim()
+      .replace('{\\mathbb{R}}^{3}','R3')
+      .replace('{}^{\\text{①}}','')
       // 移除标题前的序号和空格
       .replace(/^[\d\.]+\s*/, '')
       .replace(/\s/g,'')
@@ -59,7 +61,7 @@ const makeMathJaxCompatible = (content) => {
 }
 // 解析文档结构
 function parseDocument(content) {
-    const lines = content.split('\n');
+    const lines = content.split('\n').map(makeMathJaxCompatible);
     const sections = [];
     let currentSection = null;
     let path = [];
@@ -90,7 +92,7 @@ function parseDocument(content) {
             }
         } else if (currentSection) {
             // 修改这里：添加所有行到当前section，包括空行
-            currentSection.content.push(makeMathJaxCompatible(line));
+            currentSection.content.push(line);
         }
     }
 
@@ -105,9 +107,7 @@ function generateFilePath(section) {
       } else {
         return normalizeTitle(header.title)
       }
-
     });
-
     return parts.join('/') + '.md';
 }
 
@@ -132,4 +132,4 @@ export async function splitMarkdown(content, outputDir = '.') {
 
 
 
-const result = await splitMarkdown(fs.readFileSync('.vitepress/p1.md', 'utf8'), './');
+const result = await splitMarkdown(fs.readFileSync('.vitepress/p2.md', 'utf8'), './');
