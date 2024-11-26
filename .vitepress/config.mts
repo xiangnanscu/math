@@ -7,7 +7,7 @@ import mathjax3 from "markdown-it-mathjax3";
 // https://vitepress.dev/reference/site-config
 // https://github.com/vuejs/vitepress/blob/main/docs/.vitepress/config/zh.ts
 export default defineConfig({
-  base: "./",
+  base: process.env.GITHUB_ACTIONS ? "/math/" : "/",
   title: "数学手册",
   markdown: {
     math: true,
@@ -77,9 +77,9 @@ export default defineConfig({
     //     indexName: "数学手册",
     //   },
     // },
-    // search: {
-    //   provider: 'local'
-    // },
+    search: {
+      provider: 'local'
+    },
     socialLinks: [{ icon: "github", link: "https://github.com/xiangnanscu/math" }],
     sidebar: generateSidebar({
       /*
