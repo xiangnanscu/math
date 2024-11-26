@@ -11,7 +11,7 @@ hero:
       text: 基本运算法则
       link: /第1章算术/1.1-基本运算法则/1.1.1-数.md
     - theme: alt
-      text: API Examples
+      text: API Example
       link: /api-examples
 
 features:
