@@ -26,7 +26,7 @@
     "build": "npm run docs:build",
     "preview": "vitepress preview .",
     "docs:dev": "vitepress dev .",
-    "docs:build": "NODE_OPTIONS='--max-old-space-size=10240' vitepress build .",
+    "docs:build": "NODE_OPTIONS='--max-old-space-size=3072' vitepress build .",
     "docs:preview": "vitepress preview ."
   },
   "dependencies": {
