@@ -43,7 +43,7 @@ export default defineConfig({
     footer: {
       message: `version ${version}`,
     },
-    logo: { src: "/vitepress-logo-mini.svg", width: 24, height: 24 },
+    // logo: { src: "/vitepress-logo-mini.svg", width: 24, height: 24 },
     outline: {
       label: "页面导航",
     },
@@ -78,9 +78,9 @@ export default defineConfig({
     //   },
     // },
     search: {
-      ...(process.env.GITHUB_ACTIONS ? {provider: 'local'} : {})
+      ...(process.env.NODE_ENV === 'production' ? {provider: 'local'} : {}),
     },
-    socialLinks: [{ icon: "github", link: "https://github.com/xiangnanscu/math" }],
+    // socialLinks: [{ icon: "github", link: "https://github.com/xiangnanscu/math" }],
     sidebar: generateSidebar({
       /*
        * For detailed instructions, see the links below:
@@ -118,8 +118,8 @@ export default defineConfig({
       includeRootIndexFile: false,
       includeFolderIndexFile: false,
       includeEmptyFolder: false,
-      rootGroupText: "目录",
-      rootGroupLink: "https://github.com/xiangnanscu",
+      // rootGroupText: "目录",
+      // rootGroupLink: "https://github.com/xiangnanscu",
       rootGroupCollapsed: false,
       convertSameNameSubFileToGroupIndexPage: false,
       folderLinkNotIncludesFileName: false,
