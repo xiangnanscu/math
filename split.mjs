@@ -108,6 +108,9 @@ function generateFilePath(section) {
         return normalizeTitle(header.title)
       }
     });
+    if (parts.join('/').includes('\\')) {
+      console.log(parts.join('/'));
+    }
     return parts.join('/') + '.md';
 }
 
@@ -132,4 +135,4 @@ export async function splitMarkdown(content, outputDir = '.') {
 
 
 
-const result = await splitMarkdown(fs.readFileSync('.vitepress/p2.md', 'utf8'), './');
+const result = await splitMarkdown(fs.readFileSync('.vitepress/p3.md', 'utf8'), './');
