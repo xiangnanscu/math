@@ -77,9 +77,18 @@ export default defineConfig({
     //     indexName: "数学手册",
     //   },
     // },
-    // search: {
-    //   ...(process.env.NODE_ENV === 'production' ? {provider: 'local'} : {}),
-    // },
+    search: {
+      provider: 'local',
+      options: {
+        detailedView: false,
+        disableQueryPersistence: true,
+        miniSearch: {
+          searchOptions: {
+            fuzzy: false,
+          },
+        },
+      },
+    },
     // socialLinks: [{ icon: "github", link: "https://github.com/xiangnanscu/math" }],
     sidebar: generateSidebar({
       /*

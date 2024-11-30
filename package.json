@@ -22,6 +22,7 @@
     "split": "node split.mjs",
     "postsplit": "python diff.py",
     "diff": "python diff.py",
+    "stat": "du -sh .vitepress/dist/第* && echo '总大小:' && du -sh .vitepress/dist/第* | awk '{sum+=$1}END{print sum\"M\"}'",
     "dev": "vitepress dev .",
     "build": "npm run docs:build",
     "preview": "vitepress preview .",
