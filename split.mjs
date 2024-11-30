@@ -138,4 +138,6 @@ export async function splitMarkdown(content, outputDir = '.') {
 
 
 
-const result = await splitMarkdown(fs.readFileSync('.vitepress/p7.md', 'utf8'), './');
+for (let index = 0; index < 7; index++) {
+  const result = await splitMarkdown(fs.readFileSync(`.vitepress/p${index+1}.md`, 'utf8'), './');
+}
