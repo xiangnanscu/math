@@ -77,30 +77,30 @@ export default defineConfig({
     //     indexName: "数学手册",
     //   },
     // },
-    search: {
-      provider: 'local',
-      options: {
-        detailedView: false,
-        disableQueryPersistence: true,
-        // _render: (src, env, md) => {
-        //   console.log('Available fields:', src, env, md)
-        //   return src
-        // },
-        miniSearch: {
-          // https://lucaong.github.io/minisearch/types/MiniSearch.Options.html
-          options: {
-            // extractField: (document) => {
-            //   return document.title
-            // }
-          },
-          searchOptions: {
-            fuzzy: false,
-            // maxFuzzy:2,
-            fields: ['title']
-          },
-        },
-      },
-    },
+    // search: {
+    //   provider: 'local',
+    //   options: {
+    //     detailedView: false,
+    //     disableQueryPersistence: true,
+    //     // _render: (src, env, md) => {
+    //     //   console.log('Available fields:', src, env, md)
+    //     //   return src
+    //     // },
+    //     miniSearch: {
+    //       // https://lucaong.github.io/minisearch/types/MiniSearch.Options.html
+    //       options: {
+    //         // extractField: (document) => {
+    //         //   return document.title
+    //         // }
+    //       },
+    //       searchOptions: {
+    //         fuzzy: false,
+    //         // maxFuzzy:2,
+    //         fields: ['title']
+    //       },
+    //     },
+    //   },
+    // },
     // socialLinks: [{ icon: "github", link: "https://github.com/xiangnanscu/math" }],
     sidebar: generateSidebar({
       /*
