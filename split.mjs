@@ -55,7 +55,7 @@ const makeMathJaxCompatible = (content) => {
   .replace(/<table>[\s\S]*?<\/table>/g, (match) => {
     return formatTable(match);
   })
-  .replaceAll(/图 \d+\.\d+/g, (match) => {
+  .replaceAll(/^图 \d+\.\d+$/g, (match) => {
     return `<center>${match}</center>`;
   })
   // .replaceAll('">', '">\n\n')
