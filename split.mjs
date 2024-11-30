@@ -55,6 +55,9 @@ const makeMathJaxCompatible = (content) => {
   .replace(/<table>[\s\S]*?<\/table>/g, (match) => {
     return formatTable(match);
   })
+  .replaceAll(/图 \d+\.\d+/g, (match) => {
+    return `<center>${match}</center>`;
+  })
   // .replaceAll('">', '">\n\n')
   // .replaceAll('<td>', '<td>\n\n')
   // .replaceAll('</td>', '\n\n</td>');
@@ -135,4 +138,4 @@ export async function splitMarkdown(content, outputDir = '.') {
 
 
 
-const result = await splitMarkdown(fs.readFileSync('.vitepress/p6.md', 'utf8'), './');
+const result = await splitMarkdown(fs.readFileSync('.vitepress/p7.md', 'utf8'), './');
