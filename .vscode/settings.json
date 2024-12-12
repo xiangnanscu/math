@@ -1,6 +1,6 @@
 {
   "search.exclude": {
-    "**/.vitepress/**": true,
+    "**/.vitepress/cache/**": true,
     "**/docs/**": true
   }
 }
