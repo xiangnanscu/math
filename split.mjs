@@ -2,7 +2,7 @@ import { mkdir, writeFile } from 'fs/promises';
 import { dirname } from 'path';
 import fs from 'fs';
 import { formatTable } from './utils.mjs';
-
+import { formatNumbering } from './utils.mjs';
 // 规范化标题为文件名
 function normalizeTitle(title) {
   return title
@@ -51,7 +51,11 @@ function parseHeader(line) {
 }
 
 const makeMathJaxCompatible = (content) => {
-  return content.replace(/^## [^第]/g, '$1').replace('](images', '](/images').replace(' {€',' \text{€}{')
+  return content
+  // .replace(/^## (\d+)\./g, '$1. ')
+  .replace(/^## ([^第])/g, '$1')
+  .replace('](images', '](/images')
+  .replace(' {€',' \text{€}{')
   .replace(/<table>[\s\S]*?<\/table>/g, (match) => {
     return formatTable(match);
   })

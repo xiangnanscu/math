@@ -84,8 +84,66 @@ export function formatTable(html) {
   return result;
 }
 
+export function formatNumbering(markdown) {
+    const STATE = {
+        NORMAL: 0,      // 普通文本状态
+        SECTION: 1,     // 遇到##标题状态
+        NUMBERING: 2    // 处理$1编号状态
+    };
+
+    let state = STATE.NORMAL;
+    let result = '';
+    let currentNumber = 0;
+    let currentSection = '';
+    let lines = markdown.split('\n');
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+
+        switch (state) {
+            case STATE.NORMAL:
+                if (line.startsWith('##### ')) {
+                    state = STATE.SECTION;
+                    currentSection = line;
+                    currentNumber = 0;
+                    result += line + '\n';
+                } else if (line.startsWith('$1 ')) {
+                    currentNumber++;
+                    result += line.replace('$1', currentNumber + '.') + '\n';
+                } else {
+                    result += line + '\n';
+                }
+                break;
+
+            case STATE.SECTION:
+                state = STATE.NORMAL;
+                if (line.startsWith('$1 ')) {
+                    currentNumber++;
+                    result += line.replace('$1', currentNumber + '.') + '\n';
+                } else {
+                    result += line + '\n';
+                }
+                break;
+        }
+    }
+
+    return result;
+}
 
 if (import.meta.url === `file://${process.argv[1]}`) {
 // console.log( formatTable('<table><tr><td rowspan="2">$p > 0 0 < 0$</td><td>指数 $x$</td><td>幂 ${a}^{x}$</td></tr></table>'));
 // console.log(formatTable('<table><tr><td colspan="2"/><td/><td>a</td></tr></table>'));
+
+    // 测试formatNumbering
+    const testMarkdown = `## 1.1.1.1
+
+$1 title1
+
+$1 title2
+
+$1 title3
+
+## 1.1.1.2`;
+
+    console.log(formatNumbering(testMarkdown));
 }
