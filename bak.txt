@@ -9,3 +9,6 @@ $1
 
   ^■[ ]([^$])
   $\blacksquare $1$:
+
+  ^\$\\mathbf\{([ABCD])\}\$ :
+  $\blacksquare \mathbf{$1}$ :
