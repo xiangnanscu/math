@@ -76,13 +76,18 @@ const makeMathJaxCompatible = (content) => {
   .replace(/^\d+\.[^\d].+$/g, (match) => {
     return `**${match}**`
   })
-  // .replaceAll('">', '">\n\n')
-  // .replaceAll('<td>', '<td>\n\n')
-  // .replaceAll('</td>', '\n\n</td>');
+}
+const swapLine = (line) => {
+  if (line.match(/\.\s+(\d)\./g)) {
+    return line.replace(/\.\s+(\d)\./g, (match, n) => {
+      return `.\n\n${n}. `
+    }).split('\n')
+  }
+  return [line]
 }
 // 解析文档结构
 function parseDocument(content) {
-    const lines = content.split('\n').map(makeMathJaxCompatible);
+    const lines = content.split('\n').flatMap(swapLine).map(makeMathJaxCompatible);
     const sections = [];
     let currentSection = null;
     let path = [];
