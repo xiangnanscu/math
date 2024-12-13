@@ -54,7 +54,7 @@ const makeMathJaxCompatible = (content) => {
   return content
   // .replace(/^## (\d+)\./g, '$1. ')
   .replace(/(^[I])\s([\u4e00-\u9fa5])/g, (match) => {
-    return `$\blacksquare$`
+    return `$\\blacksquare$ `
   })
   .replace(/^([a-z]\)\s+\S+)/g, (match) => {
     return `**${match}**`
