@@ -18,3 +18,5 @@ $1
 
   ^☐([ABCDE]):
   $\blacksquare \mathbf{$1}$ :
+
+  ^\.\s+\d\.
