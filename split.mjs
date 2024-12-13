@@ -78,7 +78,7 @@ const makeMathJaxCompatible = (content) => {
   })
 }
 const swapLine = (line) => {
-  if (line.match(/\.\s+(\d)\./g)) {
+  if (!line.includes('<table>') && line.match(/\.\s+(\d)\./g)) {
     return line.replace(/\.\s+(\d)\./g, (match, n) => {
       return `.\n\n${n}. `
     }).split('\n')
