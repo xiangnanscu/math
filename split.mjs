@@ -59,6 +59,9 @@ const makeMathJaxCompatible = (content) => {
   .replace(/^(\([0-9]\)\s+\S+)/g, (match) => {
     return match.length < 20 ? `**${match}**` : match
   })
+  .replace(/^\d+\.[^\d].+$/g, (match) => {
+    return `**${match}**`
+  })
   .replace(/^##\s+([^第].+)$/g, (match, title) => {
     return `**${title}**`
   })
