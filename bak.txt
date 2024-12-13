@@ -12,3 +12,9 @@ $1
 
   ^\$\\mathbf\{([ABCD])\}\$ :
   $\blacksquare \mathbf{$1}$ :
+
+  ^## ([ABCDE]):
+  $\blacksquare \mathbf{$1}$ :
+
+  ^☐([ABCDE]):
+  $\blacksquare \mathbf{$1}$ :
