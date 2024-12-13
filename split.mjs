@@ -54,9 +54,14 @@ const makeMathJaxCompatible = (content) => {
   return content
   // .replace(/^## (\d+)\./g, '$1. ')
   .replace(/^([a-z]\)\s+\S+)/g, (match) => {
-    return `**${match[0]}**`
+    return `**${match}**`
   })
-  .replace(/^## ([^第])/g, '$1')
+  .replace(/^(\([0-9]\)\s+\S+)/g, (match) => {
+    return match.length < 20 ? `**${match}**` : match
+  })
+  .replace(/^##\s+([^第].+)$/g, (match) => {
+    return `**${match}**`
+  })
   .replace('](images', '](/images')
   .replace(' {€',' \text{€}{')
   .replace(/<table>[\s\S]*?<\/table>/g, (match) => {
