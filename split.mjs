@@ -59,10 +59,11 @@ const makeMathJaxCompatible = (content) => {
   .replace(/^([a-z]\)\s+\S+)/g, (match) => {
     return `**${match}**`
   })
-  .replace(/^(\([0-9]\)\s+\S+)/g, (match) => {
+  .replace(/^(\([0-9]\)\s+[\u4e00-\u9fa5、]+)/g, (match) => {
     return match.length < 20 ? `**${match}**` : match
   })
   .replace(/^##\s+([^第].+)$/g, (match, title) => {
+    console.log("aaaaaaaaa")
     return `**${title}**`
   })
   .replace('](images', '](/images')
