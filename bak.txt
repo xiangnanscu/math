@@ -24,3 +24,6 @@ $1
 .
 
 $\blacksquare$
+
+$$
+I =
