@@ -143,7 +143,7 @@ $1 title2
 
 $1 title3
 
-## 1.1.1.2`;
+###### 1.1.1.2`;
 
     console.log(formatNumbering(testMarkdown));
 }
